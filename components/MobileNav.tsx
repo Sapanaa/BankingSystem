@@ -1,19 +1,30 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import React from 'react'
-import Link from 'next/link'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Menu } from 'lucide-react'
 import { sidebarLinks } from '@/constants'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-const Sidebar = ({user}: SidebarProps) => {
-  const pathname = usePathname()
+
+const MobileNav = ({user}: MobileNavProps) => {
+    const pathname = usePathname()
   return (
-    <section className='sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px]'>
-    <nav className='flex flex-col'>
-      <Link href="/" className='mb-12 cursor-pointer items-center gap-2'>
-      <h1 className='text-2xl font-bold'>Velora</h1>
-      </Link>
-      {sidebarLinks.map((link) => {
+    <section className='w-full max-w-[264px]'>
+        <Sheet>
+  <SheetTrigger>
+    <Menu />
+  </SheetTrigger>
+  <SheetContent>
+ {sidebarLinks.map((link) => {
         const isActive = pathname === link.route || pathname.startsWith(`${link.route}/`)
 
        return (
@@ -31,18 +42,15 @@ const Sidebar = ({user}: SidebarProps) => {
                     'brightness-[3] invert-0': isActive
                   })}
           />
-        <p className={cn("text-16 font-semibold text-gray-900 max-xl:hidden", { "!text-white": isActive })}>{link.label}</p>
+        <p className={cn("text-16 font-semibold text-black-2", { "!text-white": isActive })}>{link.label}</p>
         </Link>
        )
       })}
-
-    User
-    </nav>
-
-
-    Footer
+  </SheetContent>
+</Sheet>
+      
     </section>
   )
 }
 
-export default Sidebar
+export default MobileNav
