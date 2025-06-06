@@ -1,12 +1,13 @@
 import MobileNav from "@/components/MobileNav";
 import Sidebar from "@/components/Sidebar";
+import { getLoggedInUser } from "@/lib/actions/user.action";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const loggedIn = { firstName: "sapana ", lastName: "Dhami"}
+    const loggedIn = await getLoggedInUser();
   return (
     <main className="flex h-screen w-full">
         <Sidebar  user = {loggedIn}/>
