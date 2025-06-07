@@ -1,4 +1,3 @@
-
 "use server";
 
 import {
@@ -21,7 +20,6 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
   try {
     // get banks from db
     const banks = await getBanks({ userId });
-   
 
     const accounts = await Promise.all(
       banks?.map(async (bank: Bank) => {

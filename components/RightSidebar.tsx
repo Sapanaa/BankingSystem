@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
 import BankCard from './BankCard'
-import { userAgentFromString } from 'next/server'
 
 const RightSidebar = ({user, transactions, banks}: RightSidebarProps) => {
   return (
