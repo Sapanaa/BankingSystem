@@ -15,6 +15,7 @@ import { Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { signUp, signIn } from "@/lib/actions/user.action"
+import PlaidLink from "./PlaidLink"
 
 const AuthForm = ({type }: {type: string}) => {
     const router = useRouter()
@@ -107,7 +108,7 @@ const AuthForm = ({type }: {type: string}) => {
         {
             user ? (
                <div className='flex flex-col gap-4 md:gap-8'>
-
+                    <PlaidLink user={user} variant="primary" />
                </div> 
             ) : (
                 <>
